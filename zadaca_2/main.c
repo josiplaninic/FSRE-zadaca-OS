@@ -49,12 +49,12 @@ void izadji_iz_kriticnog_odsjecka(int i, int j) {
 void proc(int i) {
     int j = 1 - i;
     for (int k = 1; k <= 5; k++) {
-        udji_u_kriticni(i, j);
+        udji_u_kriticni_odsjecak(i, j);
         for (int m = 1; m <= 5; m++) {
             printf("Proces %d: k = %d, m = %d\n", i, k, m);
             sleep(1);
         }
-        izadji_iz_kriticnog(i, j);
+        izadji_iz_kriticnog_odsjecka(i, j);
     }
     exit(0);
 }
