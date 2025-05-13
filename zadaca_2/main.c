@@ -25,8 +25,8 @@
 #define N 2  // broj procesa (2 za Dekker)
 
 // Zajedničke varijable
-int *ZASTAVICA;
-int *PRAVO;
+int *ZASTAVICA; // predstavlja zastavicu za svaki proces 
+int *PRAVO; //predstavlja proces koji ima pravo pristupa kritičnom dijelu
 
 void udji_u_kriticni(int i, int j) {
     ZASTAVICA[i] = 1;
