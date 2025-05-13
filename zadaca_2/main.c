@@ -28,7 +28,7 @@
 int *ZASTAVICA; // predstavlja zastavicu za svaki proces 
 int *PRAVO; //predstavlja proces koji ima pravo pristupa kritičnom dijelu
 
-void udji_u_kriticni(int i, int j) {
+void udji_u_kriticni_odsjecak(int i, int j) {
     ZASTAVICA[i] = 1;
     while (ZASTAVICA[j]) {
         if (*PRAVO == j) {
@@ -41,7 +41,7 @@ void udji_u_kriticni(int i, int j) {
     }
 }
 
-void izadji_iz_kriticnog(int i, int j) {
+void izadji_iz_kriticnog_odsjecka(int i, int j) {
     *PRAVO = j;
     ZASTAVICA[i] = 0;
 }
