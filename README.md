@@ -14,7 +14,7 @@ Zadaci su riješeni u programskom jeziku C, namjenjeni za linux okruženje
 
 This repository contains assignments from the Operating Systems course at The Faculty of Mechanical Engineering, Computing and Electrical Engineering (FSRE).
 
-Covered Topics;
+Covered Topics:
 1.Signals and Interrupts
 2.Multitasking Using Multiple Processes
 3.Multithreading
