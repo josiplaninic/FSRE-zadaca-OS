@@ -4,6 +4,14 @@
 #include <semaphore.h>
 #include <unistd.h>
 
+// Modelirati vrtuljak (ringišpil) s dva tipa dretvi/procesa:
+// dretvama/procesima posjetitelj (koje predstavljaju posjetitelje koji žele na
+// vožnju) te dretvom/procesom vrtuljak. Dretvama/procesima posjetitelj se ne
+// smije dozvoliti ukrcati na vrtuljak kada više nema praznih mjesta (kojih je
+// ukupno N) te prije nego li svi prethodni posjetitelji siđu. Vrtuljak se može
+// pokrenuti tek kada je pun. Za sinkronizaciju koristiti opće semafore i dodatne
+// varijable.
+
 #define BROJ_SJEDALA 4
 #define BROJ_POSJETITELJA 10
 
