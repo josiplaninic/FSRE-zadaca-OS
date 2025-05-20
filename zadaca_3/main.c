@@ -10,7 +10,18 @@
 /*
 	JOSIP PLANINIC 2242/RR
 
-	Zadatak 3. - Ostvariti program koji simulira tijek rezervacije stolova u nekom restoranu. Program na početku treba stvoriti određeni broj dretvi koji se zadaje u naredbenom retku. Svaka dretva/proces nakon isteka jedne sekunde provjerava ima li slobodnih stolova te slučajno odabire jedan od njih. Nakon odabira, dretva ulazi u kritični odsječak te ponovo provjerava je li odabrani stol slobodan. Ako jest, označava stol zauzetim i izlazi iz kritičnog odsječka. U oba slučaja, nakon obavljene operacije, ispisuje se trenutno stanje svih stolova te podatci o obavljenoj rezervaciji. Prilikom ispisa za svaki stol mora biti vidljivo je li slobodan, ili ako nije, broj dretve/procesa koja je taj stol rezervirala. Broj stolova se također zadaje u naredbenom retku. Svaka dretva ponavlja isti postupak sve dok više nema slobodnih stolova. Program završava kada sve dretve završe.
+	Zadatak 3. - Ostvariti program koji simulira tijek rezervacije stolova u nekom restoranu. 
+    Program na početku treba stvoriti određeni broj dretvi koji se zadaje u 
+    naredbenom retku. Svaka dretva/proces nakon isteka jedne sekunde provjerava
+     ima li slobodnih stolova te slučajno odabire jedan od njih. Nakon odabira,
+      dretva ulazi u kritični odsječak te ponovo provjerava je li odabrani stol 
+      slobodan. Ako jest, označava stol zauzetim i izlazi iz kritičnog odsječka.
+       U oba slučaja, nakon obavljene operacije, ispisuje se trenutno stanje svih 
+       stolova te podatci o obavljenoj rezervaciji. Prilikom ispisa za svaki stol 
+       mora biti vidljivo je li slobodan, ili ako nije, broj dretve/procesa koja je 
+       taj stol rezervirala. Broj stolova se također zadaje u naredbenom retku. Svaka
+        dretva ponavlja isti postupak sve dok više nema slobodnih stolova. Program završava
+         kada sve dretve završe.
 
 	Primjer ispisa za 3 dretve i 5 stolova:
 		Dretva 1: odabirem stol 2
@@ -64,7 +75,7 @@ void udji_u_kriticni_odsjecak(int i) {
     BROJ[i] = max + 1;
     ULAZ[i] = 0;
     
-    //privremeno blokiramo rad prosljedjene dretve
+    //privremeno blokiramo rad prosljedjene dretve(dok ne dodje na red)
     //iteriramo kroz redne brojeve dretvi
     for (int j = 0; j < broj_dretvi; j++) {
         //ukoliko postoji dretva koja je u procesu dodjele broja, ili ima manji redni broj(ili manji redni broj i indeks), 
@@ -73,7 +84,7 @@ void udji_u_kriticni_odsjecak(int i) {
         //proslijedjenu dretvu blokiramo ako je ulaz neke druge dretve 1 kako ne bismo koristili zastarjele vrijednosti
         while (ULAZ[j]);
 
-
+        //ako je vrijednost BROJ[j], ta dretva ne zeli uci u kriticni odsjecak te ju zanemarujemo
         while (BROJ[j] != 0 &&
               (BROJ[j] < BROJ[i] || (BROJ[j] == BROJ[i] && j < i)));
     }
@@ -130,7 +141,7 @@ void* rezervacija(void *arg) {
 }
 
 int main(int argc, char *argv[]) {
-    //shell naredba mora imati 3 argumenta, naziv .exe datoteke, broj dretvi, broj stolova 
+    //shell naredba imati 3 argumenta, naziv .exe datoteke, broj dretvi, broj stolova 
     if (argc != 3) {
         printf("Upotreba: %s broj_dretvi broj_stolova\n", argv[0]);
         return 1;
