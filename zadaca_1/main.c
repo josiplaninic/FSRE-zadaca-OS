@@ -28,6 +28,8 @@
 // uvijek mogu biti u nizu open+fscanf/fprintf+close, tj. ne držati datoteke otvorenima da se
 // izbjegnu neki drugi problemi. Ali ne mora se tako. U obradu dodati odgodu (npr. sleep(5))
 // da se uspori izvođenje.
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
